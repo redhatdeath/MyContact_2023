@@ -1,0 +1,18 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fragment_margin">2dp</dimen>
+    <dimen name="fragment_card_ud_dn">2dp</dimen>
+    <dimen name="fragment_card_lf_rt">4dp</dimen>
+    <dimen name="padding_ll">4dp</dimen>
+    <dimen name="radius">4dp</dimen>
+
+    <dimen name="card_left_right_top_bottom">8dp</dimen>
+    <dimen name="card_up_dn">4dp</dimen>
+    <dimen name="card_padding">2dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_elevation_enable">5dp</dimen>
+    <dimen name="card_elevation_disable">1dp</dimen>
+
+
+</resources>

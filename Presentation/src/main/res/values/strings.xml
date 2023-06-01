@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">My Contact</string>
+    <string name="add_new_person">Add new person</string>
+    <string name="profile_photo"> Profile photo </string>
+    <string name="last_name_hint"> This last name </string>
+    <string name="first_second_name_hint"> This first second name </string>
+    <string name="last_name"> Last name </string>
+    <string name="first_name"> First name </string>
+    <string name="second_name"> Second name </string>
+    <string name="date"> Date </string>
+    <string name="email"> Email </string>
+    <string name="phone"> Phone </string>
+    <string name="list_of_knowledge"> List of knowledge </string>
+    <string name="people_s_photo"> Person\'s photo </string>
+</resources>
