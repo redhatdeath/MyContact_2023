@@ -9,22 +9,23 @@ import androidx.room.RoomDatabase;
 import ru.shanin.data.db_room.dao.PersonDao;
 import ru.shanin.data.db_room.entity.PersonRoom;
 
-@Database(entities = {PersonRoom.class}, version = 1)
+@Database(
+        entities = {PersonRoom.class},
+        version = 1,
+        exportSchema = false
+)
 public abstract class AppDatabase extends RoomDatabase {
-    private static AppDatabase instance;
+    private static AppDatabase database;
+    private static final String DB_NAME = AppDatabase.class.getSimpleName();
+    private static final Object LOCK = new Object();
 
     public abstract PersonDao personDao();
 
     public static AppDatabase getInstance(Context context) {
-        AppDatabase tempInstance = instance;
-        if (tempInstance != null)
-            return tempInstance;
-        else tempInstance = Room
-                .databaseBuilder(context,
-                        AppDatabase.class,
-                        AppDatabase.class.getSimpleName())
-                .build();
-        instance = tempInstance;
-        return tempInstance;
+        synchronized (LOCK) {
+            if (database == null)
+                database = Room.databaseBuilder(context, AppDatabase.class, DB_NAME).build();
+            return database;
+        }
     }
 }

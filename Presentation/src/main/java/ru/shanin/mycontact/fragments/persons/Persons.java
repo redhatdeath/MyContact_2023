@@ -140,6 +140,7 @@ public class Persons extends Fragment {
         binding.rvPersons.setAdapter(adapter);
         setupRecyclerView();
         peopleTouchHelper.attachToRecyclerView(binding.rvPersons);
+
     }
 
     private void startAboutPeople(Person person) {
