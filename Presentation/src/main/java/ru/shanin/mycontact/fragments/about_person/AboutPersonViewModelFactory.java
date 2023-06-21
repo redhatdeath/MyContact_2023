@@ -1,5 +1,6 @@
 package ru.shanin.mycontact.fragments.about_person;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -12,10 +13,9 @@ public class AboutPersonViewModelFactory implements ViewModelProvider.Factory {
         this._getById = getById;
     }
 
-
+    @NonNull
     @Override
-    public <T extends ViewModel> T create(Class<T> modelClass) {
+    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         return (T) new AboutPersonViewModel(_getById);
     }
 }
-

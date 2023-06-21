@@ -1,6 +1,5 @@
 package ru.shanin.mycontact.fragments.persons.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,9 +87,4 @@ public class Adapter extends ListAdapter<Person, ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         viewHolder.setPersonData(getItem(position));
     }
-
-    private static void showLog(String s) {
-        Log.d("showLog", s);
-    }
-
 }

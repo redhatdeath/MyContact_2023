@@ -68,7 +68,7 @@ public class Persons extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initAdapter();
         initViewModel();
-        initView(view);
+        initView();
     }
 
     private void initAdapter() {
@@ -135,7 +135,7 @@ public class Persons extends Fragment {
                 Adapter.VIEW_TYPE_PEOPLE_AGE_5, Adapter.MAX_POOL_SIZE);
     }
 
-    private void initView(View view) {
+    private void initView() {
         binding.fab.setOnClickListener(v -> viewModel.addNew());
         binding.rvPersons.setAdapter(adapter);
         setupRecyclerView();
@@ -163,7 +163,10 @@ public class Persons extends Fragment {
     }
 
     private void newShare(Person person) {
-        Intent intent = ShareIntent.share(person);
-        startActivity(Intent.createChooser(intent, "Поделится ^-^"));
+        startActivity(
+                Intent.createChooser(
+                        ShareIntent.share(person),
+                        " Share ^-^ ")
+        );
     }
 }

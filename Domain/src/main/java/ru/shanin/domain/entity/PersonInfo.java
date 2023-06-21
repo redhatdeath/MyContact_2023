@@ -1,8 +1,5 @@
 package ru.shanin.domain.entity;
 
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
-
 import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
@@ -17,7 +14,7 @@ public class PersonInfo {
     private final Date date;
     private final String email;
     private final String phone;
-    private final ArrayList<String> listOfKnowledge;
+    private final ArrayList<Knowledge> knowledge;
 
     public PersonInfo(
             String lastName,
@@ -26,15 +23,14 @@ public class PersonInfo {
             Date date,
             String email,
             String phone,
-            ArrayList<String> listOfKnowledge
-    ) {
+            ArrayList<Knowledge> knowledge) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.secondName = secondName;
         this.date = date;
         this.email = email;
         this.phone = phone;
-        this.listOfKnowledge = listOfKnowledge;
+        this.knowledge = knowledge;
     }
 
     @NonNull
@@ -57,12 +53,8 @@ public class PersonInfo {
                         this.secondName.equals(peopleInfo.getSecondName()) &&
                         this.email.equals(peopleInfo.getEmail()) &&
                         this.phone.equals(peopleInfo.getPhone()) &&
-                        this.date == peopleInfo.getDate() && (
-                        this.listOfKnowledge == peopleInfo.getListOfKnowledge() ||
-                                this.listOfKnowledge.stream()
-                                        .collect(groupingBy(k -> k, counting()))
-                                        .equals(peopleInfo.getListOfKnowledge().stream()
-                                                .collect(groupingBy(k -> k, counting()))));
+                        this.date == peopleInfo.getDate() &&
+                        this.knowledge.equals(peopleInfo.getKnowledge());
     }
 
     public String getLastName() {
@@ -89,8 +81,7 @@ public class PersonInfo {
         return phone;
     }
 
-    public ArrayList<String> getListOfKnowledge() {
-        return listOfKnowledge;
+    public ArrayList<Knowledge> getKnowledge() {
+        return knowledge;
     }
-
 }

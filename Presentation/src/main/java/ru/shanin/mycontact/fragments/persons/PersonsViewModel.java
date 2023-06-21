@@ -32,7 +32,7 @@ public class PersonsViewModel extends ViewModel {
 
     protected void addNew() {
         Person person = NewData.newPerson();
-        addNew.personAddNew(person);
+        addNew(person);
     }
 
     protected void addNew(Person person) {

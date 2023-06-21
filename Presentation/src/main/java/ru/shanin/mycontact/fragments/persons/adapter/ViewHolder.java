@@ -24,9 +24,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setPersonData(Person person) {
-        itemView.setOnClickListener(v -> {
-            onClickListener.onClick(person);
-        });
+        itemView.setOnClickListener(v -> onClickListener.onClick(person));
         itemView.setOnLongClickListener(v -> {
             onLongClickListener.onLongClick(person);
             return true;

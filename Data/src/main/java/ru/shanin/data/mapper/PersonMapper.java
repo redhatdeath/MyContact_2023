@@ -2,9 +2,6 @@ package ru.shanin.data.mapper;
 
 import androidx.annotation.NonNull;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,14 +16,14 @@ public class PersonMapper {
             Person person
     ) {
         return new PersonRoom(
-                person.getId() + "",
-                person.getPersonInfo().getLastName() + "",
-                person.getPersonInfo().getFirstName() + "",
-                person.getPersonInfo().getSecondName() + "",
-                person.getPersonInfo().getDate().getTime() + 0,
-                person.getPersonInfo().getPhone() + "",
-                person.getPersonInfo().getEmail() + "",
-                (new Gson()).toJson(person.getPersonInfo().getListOfKnowledge()) + ""
+                person.getId(),
+                person.getPersonInfo().getLastName(),
+                person.getPersonInfo().getFirstName(),
+                person.getPersonInfo().getSecondName(),
+                person.getPersonInfo().getDate().getTime(),
+                person.getPersonInfo().getPhone() ,
+                person.getPersonInfo().getEmail(),
+                person.getPersonInfo().getKnowledge()
         );
     }
 
@@ -34,18 +31,17 @@ public class PersonMapper {
             PersonRoom personRoom
     ) {
         return new Person(
-                personRoom.getPersonId() + "",
+                personRoom.getPersonId(),
                 new PersonInfo(
-                        personRoom.getLastName() + "",
-                        personRoom.getFirstName() + "",
-                        personRoom.getSecondName() + "",
+                        personRoom.getLastName(),
+                        personRoom.getFirstName(),
+                        personRoom.getSecondName(),
                         new Date(personRoom.getDate()),
-                        personRoom.getEmail() + "",
-                        personRoom.getPhone() + "",
-                        (new Gson()).fromJson(
-                                personRoom.getListOfKnowledge(),
-                                new TypeToken<ArrayList<String>>() {
-                                }.getType())));
+                        personRoom.getEmail(),
+                        personRoom.getPhone(),
+                        personRoom.getListOfKnowledge()
+                )
+        );
     }
 
     public static ArrayList<Person> mapListDbModelToListEntity(

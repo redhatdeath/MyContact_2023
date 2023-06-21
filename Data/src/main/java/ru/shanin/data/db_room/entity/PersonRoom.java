@@ -5,11 +5,18 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import java.util.ArrayList;
+
+import ru.shanin.data.db_room.converters.Converter;
+import ru.shanin.domain.entity.Knowledge;
 
 @Entity(
         tableName = PersonRoom.NAME_TABLE,
         indices = {@Index(PersonRoom.COL_PERSON_ID)}
 )
+@TypeConverters(value = Converter.class)
 public class PersonRoom {
     public static final String NAME_TABLE = "Persons";
     public static final String COL_PERSON_ID = "Person_id";
@@ -44,7 +51,7 @@ public class PersonRoom {
     private final String email;
 
     @ColumnInfo(name = COL_LIST_OF_KNOWLEDGE)
-    private final String listOfKnowledge;
+    private final ArrayList<Knowledge> listOfKnowledge;
 
     public PersonRoom(
             @NonNull String personId,
@@ -54,7 +61,7 @@ public class PersonRoom {
             long date,
             String phone,
             String email,
-            String listOfKnowledge
+            ArrayList<Knowledge> listOfKnowledge
     ) {
         this.lastName = lastName;
         this.firstName = firstName;
@@ -70,6 +77,7 @@ public class PersonRoom {
         return lastName;
     }
 
+    @NonNull
     public String getPersonId() {
         return personId;
     }
@@ -94,7 +102,7 @@ public class PersonRoom {
         return email;
     }
 
-    public String getListOfKnowledge() {
+    public ArrayList<Knowledge> getListOfKnowledge() {
         return listOfKnowledge;
     }
 }

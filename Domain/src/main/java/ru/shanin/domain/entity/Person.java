@@ -6,12 +6,8 @@ import androidx.annotation.Nullable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Comparator;
-
-import ru.shanin.domain.entity.comparators.ComparatorByLFSNames;
 
 public class Person {
-    public static final Comparator<Person> byLFN = new ComparatorByLFSNames();
     private final PersonInfo personInfo;
     private final String id;
 

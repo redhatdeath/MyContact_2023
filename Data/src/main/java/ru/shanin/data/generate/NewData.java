@@ -3,10 +3,11 @@ package ru.shanin.data.generate;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Random;
 
+import ru.shanin.domain.entity.Knowledge;
 import ru.shanin.domain.entity.Person;
 import ru.shanin.domain.entity.PersonInfo;
 
@@ -61,19 +62,21 @@ public class NewData {
         return genString((int) (8 + Math.random() * 5));
     }
 
-    private static ArrayList<String> genListOfKnowledge() {
+    private static ArrayList<Knowledge> genListOfKnowledge() {
         String[] knowledge = {
-                " C++/CLI ", " C# ", " Object Pascal ", " Groovy ",
+                " C++ "," CLI ", " C ", " Object_Pascal ", " Groovy ",
                 " Java ", " JavaScript ", " Objective-C ", " Perl ",
                 " PHP ", " Python ", " Ruby ", " Swift ",
-                " Visual Basic ", " Ada ", " Erlang ", " Gentee ",
+                " Visual_Basic ", " Ada ", " Erlang ", " Gentee ",
                 " Haskell ", " Scheme ", " Лисп ", " Kotlin ",
                 " Curry ", " Delphi ", " Rust ", " Scala "
         };
-        ArrayList<String> listOfKnowledge = new ArrayList<>();
-        for (int i = 0; i < (int) (Math.random() * 3 + 1); i++)
-            listOfKnowledge.add(knowledge[(int) (Math.random() * knowledge.length)]);
-        Collections.sort(listOfKnowledge);
+        ArrayList<Knowledge> listOfKnowledge = new ArrayList<>();
+        for (int i = 0; i < (int) (Math.random() * 3 + 1); i++) {
+            int id = (int) (Math.random() * knowledge.length);
+            listOfKnowledge.add(new Knowledge(id, knowledge[id]));
+        }
+        listOfKnowledge.sort(Comparator.comparing(Knowledge::getNameKnowledge));
         return listOfKnowledge;
     }
 
@@ -89,7 +92,6 @@ public class NewData {
         //showLog(format);
         return date;
     }
-
 
     public static Person newPerson() {
         String ln = genLastName();

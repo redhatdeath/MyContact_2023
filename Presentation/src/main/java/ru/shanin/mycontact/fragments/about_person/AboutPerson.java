@@ -23,7 +23,6 @@ import ru.shanin.mycontact.databinding.FragmentAboutPersonBinding;
 public class AboutPerson extends Fragment {
 
     private FragmentAboutPersonBinding binding;
-    private AboutPersonViewModel viewModel;
     private static final String ARGUMENT_PEOPLE_ID = "people id";
     private String personId;
     private Person person;
@@ -75,11 +74,9 @@ public class AboutPerson extends Fragment {
     }
 
     private void initViewModel() {
-        viewModel = new ViewModelProvider(
+        AboutPersonViewModel viewModel = new ViewModelProvider(
                 this,
-                new AboutPersonViewModelFactory(
-                        AppStart.getInstance().getGetOneItem()
-                ))
+                new AboutPersonViewModelFactory(AppStart.getInstance().getGetOneItem()))
                 .get(AboutPersonViewModel.class);
         viewModel.getPerson(personId).observe(
                 getViewLifecycleOwner(),
@@ -109,7 +106,7 @@ public class AboutPerson extends Fragment {
         binding.tvSn.setText(person.getPersonInfo().getSecondName());
         binding.tvEmail.setText(person.getPersonInfo().getEmail());
         binding.tvPhone.setText(person.getPersonInfo().getPhone());
-        binding.tvListOfKnowledge.setText(person.getPersonInfo().getListOfKnowledge().toString());
+        binding.tvListOfKnowledge.setText(person.getPersonInfo().getKnowledge().toString());
         SimpleDateFormat simpleDateFormat =
                 new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         String date = simpleDateFormat.format(person.getPersonInfo().getDate());

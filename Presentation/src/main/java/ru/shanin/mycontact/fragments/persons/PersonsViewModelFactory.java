@@ -1,5 +1,6 @@
 package ru.shanin.mycontact.fragments.persons;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -22,8 +23,9 @@ public class PersonsViewModelFactory implements ViewModelProvider.Factory {
         this._getAll = getAll;
     }
 
+    @NonNull
     @Override
-    public <T extends ViewModel> T create(Class<T> modelClass) {
+    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         return (T) new PersonsViewModel(_addNew, _delete, _getAll);
     }
 }

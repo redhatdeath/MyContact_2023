@@ -41,13 +41,6 @@ public class RepositoryWorkImpl implements RepositoryWork {
     }
 
     @Override
-    public void editPerson(Person person) {
-        Person person_new = new Person(person.getPersonInfo());
-        removePerson(person.getId());
-        addPerson(person_new);
-    }
-
-    @Override
     public void removePerson(String _id) {
         AsyncTask.execute(() -> {
             synchronized (personDao) {

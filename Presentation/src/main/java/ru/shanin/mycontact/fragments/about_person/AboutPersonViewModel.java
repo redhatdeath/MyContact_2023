@@ -17,4 +17,3 @@ public class AboutPersonViewModel extends ViewModel {
         return getById.personGetById(peopleId);
     }
 }
-
