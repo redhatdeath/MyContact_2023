@@ -1,7 +1,5 @@
 package ru.shanin.data.generate;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
@@ -12,22 +10,6 @@ import ru.shanin.domain.entity.Person;
 import ru.shanin.domain.entity.PersonInfo;
 
 public class NewData {
-
-    private static String genNamePhoto() {
-        // Field[] drawablesFields = R.drawable.class.getFields();
-        ArrayList<String> imageName = new ArrayList<>();
-        // for (Field field : drawablesFields)
-        //      if (field.getName().length() == 4)
-        //      imageName.add(field.getName());
-        for (int i = 1; i < 14; i++)
-            if (i < 10) imageName.add("a00" + i);
-            else imageName.add("a0" + i);
-        // Из имени ресурса получить идентификатор
-        // String mDrawableName = "name"; // файл name.png в папке drawable
-        // int resID = getResources().getIdentifier(mDrawableName, "drawable", getPackageName());
-        return imageName.get((int) (Math.random() * imageName.size()));
-    }
-
     private static String genNumber() {
         String digits = "0123456789";
         StringBuilder result = new StringBuilder();
@@ -64,9 +46,9 @@ public class NewData {
 
     private static ArrayList<Knowledge> genListOfKnowledge() {
         String[] knowledge = {
-                " C++ "," CLI ", " C ", " Object_Pascal ", " Groovy ",
-                " Java ", " JavaScript ", " Objective-C ", " Perl ",
-                " PHP ", " Python ", " Ruby ", " Swift ",
+                " C++ ", " CLI ", " C ", " Object_Pascal ", " Groovy ",
+                " Java ", " JavaScript ", " Objective_C ", " Perl ",
+                " PHP ", " Python ", " Ruby ", " Swift "," GO ",
                 " Visual_Basic ", " Ada ", " Erlang ", " Gentee ",
                 " Haskell ", " Scheme ", " Лисп ", " Kotlin ",
                 " Curry ", " Delphi ", " Rust ", " Scala "
@@ -82,15 +64,8 @@ public class NewData {
 
     private static Date genDate() {
         Random rnd = new Random();
-        // Get an Epoch value roughly between 2000 and 2020
         long live_ms = 946690000000L + Math.abs(rnd.nextLong()) % (20L * 365 * 24 * 60 * 60 * 1000);
-        //showLog(String.valueOf(live_ms));
-        // Construct a date
-        Date date = new Date(live_ms);
-        //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
-        //String format = simpleDateFormat.format(date);
-        //showLog(format);
-        return date;
+        return new Date(live_ms);
     }
 
     public static Person newPerson() {
@@ -103,9 +78,5 @@ public class NewData {
                 ln + "_" + fn + "@gmail.com",
                 genPhoneNumber(), genListOfKnowledge())
         );
-    }
-
-    private static void showLog(String s) {
-        Log.d("showLog", s);
     }
 }
